@@ -1,0 +1,2 @@
+# LitBit
+Lightning Payroll system
