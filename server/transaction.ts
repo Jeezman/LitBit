@@ -65,7 +65,7 @@
 // export default new EmployeesManager();
 
 
-export interface Employee {
+export interface Transaction {
     id: number;
     name: string;
     payInSatoshi: number;
