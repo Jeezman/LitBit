@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 import { existsSync, promises as fs } from 'fs';
 import { Employee } from './employee';
 
-const DB_FILE = 'db.json';
+const DB_FILE = '../db.json';
 
 export interface LndNode {
     token: string;
