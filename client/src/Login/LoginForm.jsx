@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import { Loader } from '../components/Loader';
 import './LoginForm.scss';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = () => {
+  let navigate = useNavigate();
+
+  const handleLogin = (event) => {
+    event.preventDefault();
     setIsLoading(true);
+
+    navigate('/dashboard', { replace: true });
   };
+
   return (
     <div class="form">
       <div class="form-toggle"></div>
