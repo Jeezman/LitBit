@@ -4,12 +4,25 @@ import { BrowserRouter as Router, Switch, Route, Routes } from "react-router-dom
 import styled from 'styled-components'
 import { LoginForm } from './Login/LoginForm';
 import { Loader } from './components/Loader';
+import { Dashboard } from './Dashboard';
+import { Payroll } from './Dashboard/Payroll';
+import { Settings } from './Dashboard/Settings';
+
+
+
 
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route path="payroll" element={<Payroll />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+
     </div>
   );
 }
