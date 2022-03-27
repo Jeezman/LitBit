@@ -65,15 +65,3 @@
 // export default new EmployeesManager();
 
 
-export interface Employee {
-    id: number;
-    name: string;
-    payInSatoshi: number;
-    paymentScheduleRate: string;
-    publicKey: string,
-}
-
-export const SocketEvents = {
-    employeeUpdated: 'employee-updated',
-    invoicePaid: 'invoice-paid',
-};
