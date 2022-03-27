@@ -144,7 +144,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   ))}
                 </nav>
               </div>
-              <div className="flex-shrink-0 flex bg-lb-blue-600 p-4">
+              {/* <div className="flex-shrink-0 flex bg-lb-blue-600 p-4">
                 <a
                   href={`http://twitter.com/${process.env.REACT_APP_TWITTER_USERNAME}`}
                   target="_blank"
@@ -169,7 +169,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     </div>
                   </div>
                 </a>
-              </div>
+              </div> */}
             </div>
           </Transition.Child>
           <div className="flex-shrink-0 w-14">
@@ -211,7 +211,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               ))}
             </nav>
           </div>
-          <div className="flex-shrink-0 flex bg-lb-blue-600 p-4">
+          {/* <div className="flex-shrink-0 flex bg-lb-blue-600 p-4">
             <a
               href={`http://twitter.com/${process.env.REACT_APP_TWITTER_USERNAME}`}
               target="_blank"
@@ -236,7 +236,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </div>
               </div>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </Fragment>

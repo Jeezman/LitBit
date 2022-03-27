@@ -6,7 +6,7 @@ import { LoginForm } from './Login/LoginForm';
 import { Loader } from './components/Loader';
 import { Dashboard } from './Dashboard';
 import { Payroll } from './Dashboard/Payroll';
-import { Settings } from './Dashboard/Settings';
+import { DashboardHome } from './Dashboard/Settings';
 
 
 
@@ -18,8 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="dashboard" element={<Dashboard />}>
+          <Route path="" element={<DashboardHome />} />
           <Route path="payroll" element={<Payroll />} />
-          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
 
