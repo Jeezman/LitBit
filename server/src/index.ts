@@ -5,10 +5,12 @@ import { node, initNode } from './node';
 // import employeeManager from "./employee";
 import db, {EmployeeEvents, LndNode} from './employee-db';
 import nodeManager from "./node-manager";
+import cors from 'cors';
 
 // Configure server
 const app = express();
 app.use(bodyParser.json());
+app.use(cors({ origin: '*' }));
 
 
 
