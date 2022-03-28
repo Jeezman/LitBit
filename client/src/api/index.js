@@ -16,3 +16,11 @@ export const getEmployees = () => {
 export const getEmployeeById = (id) => {
     return axios.get(`employees/${id}`)
 }
+
+export const getInfo = () => {
+    return axios.get(`info`)
+}
+
+export const getTransactions = () => {
+    return axios.get('transactions')
+}

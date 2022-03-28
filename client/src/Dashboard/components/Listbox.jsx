@@ -4,6 +4,7 @@ import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import { createEmployee } from '../../api';
 
 const schedule = [
+  { name: 'MINUTES' },
   { name: 'HOURLY' },
   { name: 'DAILY' },
   { name: 'WEEKLY' },
