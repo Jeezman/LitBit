@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f083b0a-af5a-4d2f-a717-ae7492a83666" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/nodemon.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="848508ea-ca4e-4ecf-b0e0-3f0a6e6dd1f2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodemon.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/employee-db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/employee-db.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/employee.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/employee.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/env.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node-manager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/node-manager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/node.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/transaction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/transaction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +15,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="26o6xAqnXOa3Ai6c6kFDrVRI5NP" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="26rsqHwqubtNNZrYkI5y0kQE3dW" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,30 +24,31 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/server/src" />
-      <recent name="$PROJECT_DIR$/server" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7f083b0a-af5a-4d2f-a717-ae7492a83666" name="Changes" comment="" />
-      <created>1648077838359</created>
+      <changelist id="848508ea-ca4e-4ecf-b0e0-3f0a6e6dd1f2" name="Changes" comment="" />
+      <created>1648193229012</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1648077838359</updated>
-      <workItem from="1648077841127" duration="34650000" />
+      <updated>1648193229012</updated>
+      <workItem from="1648193230132" duration="5971000" />
+      <workItem from="1648209011528" duration="2473000" />
+      <workItem from="1648211503575" duration="223000" />
+      <workItem from="1648211730169" duration="13339000" />
+      <workItem from="1648225397386" duration="13430000" />
+      <workItem from="1648240617774" duration="4929000" />
+      <workItem from="1648245640319" duration="21237000" />
     </task>
     <servers />
   </component>
@@ -83,5 +65,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/src/employee-db.ts</url>
+          <line>340</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

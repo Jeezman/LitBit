@@ -1,7 +1,7 @@
 import createLnRpc, { LnRpc } from '@radar/lnrpc';
 import { EventEmitter } from 'events';
 import { v4 as uuidv4 } from 'uuid';
-import { LndNode } from './employee-db';
+import employeeDb, { LndNode } from './employee-db';
 
 export const NodeEvents = {
   invoicePaid: 'invoice-paid',
@@ -45,7 +45,7 @@ class NodeManager extends EventEmitter {
       const { identityPubkey: publicKey } = await rpc.getInfo();
 
       // verify we have permission to get channel balances
-      await rpc.channelBalance();
+      const { balance: balance } = await rpc.channelBalance();
 
       // verify we can sign a message
       const msg = Buffer.from('authorization test').toString('base64');
@@ -55,7 +55,7 @@ class NodeManager extends EventEmitter {
       await rpc.verifyMessage({ msg, signature });
 
       // verify we have permissions to create a 1sat invoice
-      const { rHash } = await rpc.addInvoice({ value: '1' });
+      const { rHash } = await rpc.addInvoice({ value: '1', memo: 'Test invoice creation', expiry: '15' });
 
       // verify we have permission to lookup invoices
       await rpc.lookupInvoice({ rHash });
@@ -67,7 +67,7 @@ class NodeManager extends EventEmitter {
       this._lndNodes[token] = rpc;
 
       // return this node's token for future requests
-      return { token, publicKey };
+      return { token, publicKey, balance };
     } catch (err) {
       // remove the connection from the cache since it is not valid
       if (this._lndNodes[token]) {
@@ -104,6 +104,7 @@ class NodeManager extends EventEmitter {
       if (invoice.settled) {
         const hash = (invoice.rHash as Buffer).toString('base64');
         const amount = invoice.amtPaidSat;
+        employeeDb.queryInvoice(hash)
         this.emit(NodeEvents.invoicePaid, { hash, amount, pubkey });
       }
     });
