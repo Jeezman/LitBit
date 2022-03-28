@@ -65,6 +65,16 @@ app.post('/api/employees', async (req, res, next) => {
   }
 });
 
+app.get('/api/node/:employeeId', (req, res) => {
+  const employee = db.getEmployee(parseInt(req.params.employeeId, 10));
+  if (employee) {
+    let nodeByPubkey = db.getNodeByPubkey(employee.publicKey);
+    res.json({ data: nodeByPubkey });
+  } else {
+    res.status(404).json({ error: `No Employee found with ID ${req.params.id}`});
+  }
+});
+
 app.post('/api/node/:employeeId', async (req, res, next) => {
   try {
     const employeeDetail = db.getEmployee(parseInt(req.params.employeeId, 10));
