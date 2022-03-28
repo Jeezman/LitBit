@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { ellipsisSandwich } from '../../utils/formatters';
+import { EmptyState } from './EmptyState';
 
 export const PayrollList = (props) => {
+  if (props.employees.length < 1) return <EmptyState />;
   return (
     <div className="container max-w-3xl">
       <div className="py-1">

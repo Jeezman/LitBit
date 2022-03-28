@@ -1,13 +1,16 @@
 import { format } from 'date-fns';
 import moment from 'moment';
 import { commaify, ellipsisSandwich } from '../../utils/formatters';
+import { EmptyState } from './EmptyState';
 
 export const HistoryTable = (props) => {
   const transactions = props.transactions || [];
+  if (transactions.length < 1) return <EmptyState />;
+
   return (
-    <div className="container max-w-5xl">
+    <div className="container max-w-5xl h-96 overflow-scroll">
       <div className="py-1">
-        <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+        <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
           <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
             <table className="min-w-full leading-normal">
               <thead>
