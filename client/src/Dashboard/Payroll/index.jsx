@@ -27,24 +27,27 @@ export const Payroll = () => {
       publicKey: pubKey,
     };
     createEmployee(data).then((response) => {
-      console.log('response from data creation is ', response);
       handleGetEmployees();
     });
   };
 
   useEffect(() => {
-    console.log('fetching employees');
     handleGetEmployees();
   }, []);
 
   return (
-    <div className="">
-      {/* <h1>Payroll</h1> */}
+    <div className="pt-5">
+      <h1 class="text-4xl font-semibold text-gray-800 dark:text-white">
+        Hi there, admin
+      </h1>
+      <h2 class="text-md text-gray-400">
+        Here&#x27;s what&#x27;s happening with your LitBit dashboard today.
+      </h2>
       <section className="grid grid-cols-3">
         <aside className=" col-span-2">
           <PayrollList employees={employees} />
         </aside>
-        <aside className=" py-5 flex justify-end items-start">
+        <aside className=" py-5 flex justify-end items-start mr-6">
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"
@@ -61,6 +64,8 @@ export const Payroll = () => {
           setRate={setRate}
           handleFormSubmit={handleAddEmployees}
           setIsOpen={setIsOpen}
+          name={name}
+          amount={amount}
         />
       )}
     </div>

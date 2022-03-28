@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { getInfo, getTransactions } from '../../api';
 import { BalanceCard } from '../components/BalanceCard';
 import { HistoryTable } from '../components/HistoryTable';
+import { ActiveChannelCard } from '../components/ActiveChannelCard';
+import { PeersCard } from '../components/PeersCard';
 
 let tnxs = [
   {
@@ -45,40 +47,51 @@ let tnxs = [
 
 export const DashboardHome = () => {
   let [balance, setBalance] = useState('');
+  let [info, setInfo] = useState('');
   let [transactions, setTransactions] = useState([...tnxs]);
 
   const handleGetInfo = () => {
     getInfo().then((res) => {
-      console.log('response is ', res.data);
       let data = res.data;
       setBalance(data.balance);
+      setInfo(data.info);
     });
   };
 
   const handleGetTransactions = () => {
     getTransactions().then((res) => {
-      console.log('transactions ', res.data);
       let data = res.data.data;
-      console.log('date ------ is ', data.data);
 
       setTransactions(data);
     });
   };
 
   useEffect(() => {
-    console.log('fetching info');
     handleGetInfo();
     handleGetTransactions();
+    const intervalId = setInterval(() => {
+      handleGetTransactions();
+    }, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <main className="">
-      <div className="flex">
+    <main className="pt-5">
+      <h1 class="text-4xl font-semibold text-gray-800 dark:text-white">
+        Hi there, admin
+      </h1>
+      <h2 class="text-md text-gray-400">
+        Here&#x27;s what&#x27;s happening with your LitBit dashboard today.
+      </h2>
+      <div className="grid grid-cols-5 gap-4 my-6">
         <BalanceCard balance={balance} />
+        <ActiveChannelCard info={info} />
+        <PeersCard info={info} />
       </div>
       <section className="">
-        <aside className="pt-8 flex justify-between max-w-5xl">
-          <div className=" text-3xl font-semibold">Payment History</div>
+        <aside className="pt-8 flex justify-between max-w-5xl mb-5">
+          <div className=" text-2xl font-semibold">Payment History</div>
 
           <button
             type="button"

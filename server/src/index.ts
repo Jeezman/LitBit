@@ -236,7 +236,7 @@ console.log('Initializing Lightning node...');
 initNode().then(() => {
   console.log('Lightning node initialized!');
   console.log('Starting server...');
-  db.createEmployee("zIlesanmi", 12, "MINUTES", "02a47994e192a8bd67bf854c4f6c6c9f28eea9901f015cbc0e8690567059b28737");
+  // db.createEmployee("zIlesanmi", 12, "MINUTES", "02a47994e192a8bd67bf854c4f6c6c9f28eea9901f015cbc0e8690567059b28737");
   // db.createEmployee("aIlesanmi", 10, "HOURLY", "hgkjhgkjewr");
   // db.createEmployee("bOmoniyi", 40, "DAILY", "02a47994e192a8bd67bf854c4f6c6c9f28eea9901f015cbc0e8690567059b28737");
   app.listen(env.PORT, () => {
