@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { ellipsisSandwich } from '../../utils/formatters';
+
 export const PayrollList = (props) => {
   return (
     <div className="container max-w-3xl">
@@ -9,31 +12,31 @@ export const PayrollList = (props) => {
                 <tr>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
                     Name
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
                     Amount (sats)
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
                     Schedule
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
                     Public Key
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
                     Action
                   </th>
@@ -63,15 +66,15 @@ export const PayrollList = (props) => {
                     </td>
 
                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      {data.publicKey}
+                      {ellipsisSandwich(data.publicKey, 5)}
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                       <button
                         onClick={() => {}}
                         type="button"
-                        class="py-2 px-8 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                        className="py-2 px-8 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                       >
-                        Add node
+                        <Link to={`/dashboard/node/${data.id}`}>Add node</Link>
                       </button>
                     </td>
                   </tr>

@@ -1,6 +1,11 @@
-export const HistoryTable = () => {
+import { format } from 'date-fns';
+import moment from 'moment';
+import { commaify, ellipsisSandwich } from '../../utils/formatters';
+
+export const HistoryTable = (props) => {
+  const transactions = props.transactions || [];
   return (
-    <div className="container max-w-3xl">
+    <div className="container max-w-5xl">
       <div className="py-1">
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
           <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -9,127 +14,99 @@ export const HistoryTable = () => {
                 <tr>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
                     Address
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
                     Amount (sats)
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
                     Comment
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
                     status
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
                   >
-                    Created at
+                    Date Created
                   </th>
-                  {/* <th
+                  <th
                     scope="col"
-                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                  ></th> */}
+                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold"
+                  >
+                    Date Paid
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <div className="flex items-center">
-                      <div className="">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          Jean marc
-                        </p>
+                {transactions?.map((data) => (
+                  <tr key={data.id}>
+                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <div className="flex items-center">
+                        <div className="">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {ellipsisSandwich(data.paymentRequest, 5)}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">400</p>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">
-                      Payment for salary
-                    </p>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <span className="relative text-center flex justify-center px-3 py-1 font-semibold text-red-900 leading-tight">
-                      <span
-                        aria-hidden="true"
-                        className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                      ></span>
-                      <span className="relative uppercase text-xs">
-                        not paid
-                      </span>
-                    </span>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">
-                      12/09/2020
-                    </p>
-                  </td>
-
-                  {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <a
-                      href="#"
-                      className="text-indigo-600 hover:text-indigo-900"
-                    >
-                      Edit
-                    </a>
-                  </td> */}
-                </tr>
-                <tr>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <div className="flex justify-start">
-                      <div className="">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          Marcus coco
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">300</p>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">
-                      Payment for salary
-                    </p>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <span className="relative text-center flex justify-center px-3 py-1 font-semibold text-green-900 leading-tight">
-                      <span
-                        aria-hidden="true"
-                        className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                      ></span>
-                      <span className="relative uppercase text-xs">paid</span>
-                    </span>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">
-                      01/10/2012
-                    </p>
-                  </td>
-
-                  {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <a
-                      href="#"
-                      className="text-indigo-600 hover:text-indigo-900"
-                    >
-                      Edit
-                    </a>
-                  </td> */}
-                </tr>
+                    </td>
+                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <p className="text-gray-900 whitespace-no-wrap">
+                        {commaify(data.amount)}
+                      </p>
+                    </td>
+                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <p className="text-gray-900 whitespace-no-wrap whitespace-nowrap text-ellipsis overflow-hidden w-48">
+                        {data.description}
+                      </p>
+                    </td>
+                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      {data.isPaid ? (
+                        <span className="relative text-center flex justify-center px-3 py-1 font-semibold text-green-900 leading-tight">
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                          ></span>
+                          <span className="relative uppercase text-xs">
+                            paid
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="relative text-center flex justify-center px-3 py-1 font-semibold text-red-900 leading-tight">
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                          ></span>
+                          <span className="relative uppercase text-xs">
+                            not paid
+                          </span>
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <p className="text-gray-900 whitespace-no-wrap">
+                        {moment(data.timeCreated).format('MMM Do, LT')}
+                      </p>
+                    </td>
+                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <p className="text-gray-900 whitespace-no-wrap">
+                        {moment(data.timePaid).format('MMM Do, LT')}
+                      </p>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
