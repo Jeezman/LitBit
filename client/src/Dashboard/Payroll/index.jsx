@@ -1,14 +1,40 @@
 import { useEffect, useState } from 'react';
-import { getEmployees } from '../../api';
+import { createEmployee, getEmployees } from '../../api';
 import { CreateEmployeeForm } from '../components/CreateEmployee';
 import { PayrollList } from '../components/PayrollList';
 
 export const Payroll = () => {
   let [isOpen, setIsOpen] = useState(false);
+  let [employees, setEmployees] = useState([]);
+  const [name, setName] = useState('');
+  const [amount, setAmount] = useState('');
+  const [rate, setRate] = useState('HOURLY');
+  const [pubKey, setPubKey] = useState('hgkwerwqjhgkj');
+
+  const handleGetEmployees = () => {
+    getEmployees().then((response) => {
+      let data = response.data.data || [];
+      let sortedData = data.sort((a, b) => b?.id - a?.id);
+      setEmployees(sortedData);
+    });
+  };
+
+  const handleAddEmployees = () => {
+    let data = {
+      name,
+      payInSatoshi: amount,
+      paymentScheduleRate: rate,
+      publicKey: pubKey,
+    };
+    createEmployee(data).then((response) => {
+      console.log('response from data creation is ', response);
+      handleGetEmployees();
+    });
+  };
 
   useEffect(() => {
     console.log('fetching employees');
-    getEmployees().then((response) => console.log('fetched ', response));
+    handleGetEmployees();
   }, []);
 
   return (
@@ -16,7 +42,7 @@ export const Payroll = () => {
       {/* <h1>Payroll</h1> */}
       <section className="grid grid-cols-3">
         <aside className=" col-span-2">
-          <PayrollList />
+          <PayrollList employees={employees} />
         </aside>
         <aside className=" py-5 flex justify-end items-start">
           <button
@@ -28,7 +54,14 @@ export const Payroll = () => {
           </button>
         </aside>
       </section>
-      {isOpen && <CreateEmployeeForm />}
+      {isOpen && (
+        <CreateEmployeeForm
+          setName={setName}
+          setAmount={setAmount}
+          setRate={setRate}
+          handleFormSubmit={handleAddEmployees}
+        />
+      )}
     </div>
   );
 };

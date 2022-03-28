@@ -10,7 +10,7 @@ export const DashboardHome = () => {
       </div>
       <section className="">
         <aside className="pt-8 flex justify-between max-w-3xl">
-          <div className=" text-3xl font-semibold">Payroll History</div>
+          <div className=" text-3xl font-semibold">Payment History</div>
 
           <button
             type="button"
