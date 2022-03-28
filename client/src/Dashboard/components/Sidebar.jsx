@@ -1,17 +1,14 @@
 import { Fragment } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react';
 import {
-  SwitchHorizontalIcon,
-  PaperAirplaneIcon,
-  CollectionIcon,
-  DownloadIcon,
-  PencilAltIcon,
   XIcon,
-  CogIcon,
-  MailIcon,
+  ChartSquareBarIcon,
+  ReceiptTaxIcon,
+  LogoutIcon,
 } from '@heroicons/react/outline';
 import { BitcoinLogo } from '../../assets/icons';
+import { useAuth } from '../../Auth';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -19,50 +16,29 @@ function classNames(...classes) {
 
 export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
+  let auth = useAuth();
+  let navigate = useNavigate();
+
   const navigation = [
     {
       name: 'Dashboard',
       href: '/dashboard',
-      icon: PencilAltIcon,
+      icon: ChartSquareBarIcon,
       current: location.pathname === '/dashboard',
     },
     {
       name: 'Payroll',
       href: '/dashboard/payroll',
-      icon: MailIcon,
+      icon: ReceiptTaxIcon,
       current: location.pathname === '/dashboard/payroll',
     },
-    // {
-    //   name: 'Receive',
-    //   href: '/receive',
-    //   icon: DownloadIcon,
-    //   current: location.pathname === '/receive',
-    // },
-    // {
-    //   name: 'Transactions',
-    //   href: '/transactions',
-    //   icon: SwitchHorizontalIcon,
-    //   current: location.pathname === '/transactions',
-    // },
-    // {
-    //   name: 'UTXOs',
-    //   href: '/utxos',
-    //   icon: CollectionIcon,
-    //   current: location.pathname === '/utxos',
-    // },
-    // {
-    //   name: 'Send',
-    //   href: '/send',
-    //   icon: PaperAirplaneIcon,
-    //   current: location.pathname === '/send',
-    // },
-    // {
-    //   name: 'Settings',
-    //   href: '/settings',
-    //   icon: CogIcon,
-    //   current: location.pathname === '/settings',
-    // },
   ];
+
+  const handleLogout = () => {
+    auth.signout(() => {
+      navigate('/,', { replace: true });
+    });
+  };
 
   return (
     <Fragment>
@@ -211,32 +187,23 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               ))}
             </nav>
           </div>
-          {/* <div className="flex-shrink-0 flex bg-lb-blue-600 p-4">
+          <div className="flex-shrink-0 flex bg-lb-blue-600 p-4">
             <a
-              href={`http://twitter.com/${process.env.REACT_APP_TWITTER_USERNAME}`}
-              target="_blank"
+              href=""
               rel="noreferrer"
               className="flex-shrink-0 w-full group block"
+              onClick={() => handleLogout()}
             >
               <div className="flex items-center">
-                <div>
-                  <img
-                    className="inline-block h-9 w-9 rounded-full"
-                    src={`https://unavatar.io/twitter/${process.env.REACT_APP_TWITTER_USERNAME}`}
-                    alt=""
-                  />
-                </div>
+                <LogoutIcon className="text-white h-8" />
                 <div className="ml-3">
-                  <p className="text-sm font-medium text-white">
-                    @{process.env.REACT_APP_TWITTER_USERNAME}
-                  </p>
-                  <p className="text-xs font-medium text-lb-blue-200 group-hover:text-lb-blue-100">
-                    Follow on Twitter
+                  <p className="text-1xl font-medium text-lb-blue-200 group-hover:text-lb-blue-100">
+                    Logout
                   </p>
                 </div>
               </div>
             </a>
-          </div> */}
+          </div>
         </div>
       </div>
     </Fragment>

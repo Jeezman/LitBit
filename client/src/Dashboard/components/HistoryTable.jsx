@@ -8,7 +8,7 @@ export const HistoryTable = (props) => {
   if (transactions.length < 1) return <EmptyState />;
 
   return (
-    <div className="container max-w-5xl h-96 overflow-scroll">
+    <div className="container max-w-6xl h-96 overflow-scroll">
       <div className="py-1">
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
           <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">

@@ -1,7 +1,6 @@
 import { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
-import { createEmployee } from '../../api';
 
 const schedule = [
   { name: 'MINUTES' },

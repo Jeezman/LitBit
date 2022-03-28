@@ -71,6 +71,7 @@ export const DashboardHome = () => {
     handleGetTransactions();
     const intervalId = setInterval(() => {
       handleGetTransactions();
+      handleGetInfo();
     }, 1000);
 
     return () => clearInterval(intervalId);
@@ -82,15 +83,15 @@ export const DashboardHome = () => {
         Hi there, admin
       </h1>
       <h2 class="text-md text-gray-400">
-        Here&#x27;s what&#x27;s happening with your LitBit dashboard today.
+        Here&#x27;s what&#x27;s happening with your LitBitPay dashboard today.
       </h2>
       <div className="grid grid-cols-5 gap-4 my-6">
         <BalanceCard balance={balance} />
         <ActiveChannelCard info={info} />
         <PeersCard info={info} />
       </div>
-      <section className="">
-        <aside className="pt-8 flex justify-between max-w-5xl mb-5">
+      <section className="mr-10">
+        <aside className="pt-8 flex justify-between max-w-6xl mb-5">
           <div className=" text-2xl font-semibold">Payment History</div>
 
           <button

@@ -8,7 +8,7 @@ export const Payroll = () => {
   let [employees, setEmployees] = useState([]);
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
-  const [rate, setRate] = useState('HOURLY');
+  const [rate, setRate] = useState('MINUTES');
   const [pubKey, setPubKey] = useState('hgkwerwqjhgkj');
 
   const handleGetEmployees = () => {
@@ -41,7 +41,7 @@ export const Payroll = () => {
         Hi there, admin
       </h1>
       <h2 class="text-md text-gray-400">
-        Here&#x27;s what&#x27;s happening with your LitBit dashboard today.
+        Here&#x27;s what&#x27;s happening with your LitBitPay dashboard today.
       </h2>
       <section className="grid grid-cols-3">
         <aside className=" col-span-2">
