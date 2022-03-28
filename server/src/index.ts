@@ -6,10 +6,12 @@ import { node, initNode } from './node';
 import db, {EmployeeEvents, LndNode} from './employee-db';
 import nodeManager from "./node-manager";
 import {SendRequest} from "@radar/lnrpc/types/lnrpc";
+import cors from 'cors';
 
 // Configure server
 const app = express();
 app.use(bodyParser.json());
+app.use(cors({ origin: '*' }));
 
 
 
@@ -46,7 +48,7 @@ app.post('/api/employees', async (req, res, next) => {
       throw new Error('Fields name, payInSatoshi and paymentScheduleRate are required to make a employee');
     }
 
-    const employee = db.createEmployee(name, payInSatoshi, paymentScheduleRate, publicKey);
+    const employee = db.createEmployee(name, payInSatoshi, paymentScheduleRate.toUpperCase(), publicKey);
     // const invoice = await node.addInvoice({
     //   memo: `LitBit Employees #${employee.id}`,
     //   value: payInSatoshi,
@@ -114,24 +116,24 @@ app.get('/api/employees/:employeeId/invoice', async (req, res, next) => {
     // find the Employee
     const employee = db.getEmployee(parseInt(employeeId));
     if (!employee) throw new Error('Employee not found');
-      if (employee) {
+    if (employee) {
 
-        // find the node that made this Employee
-        const node = db.getNodeByPubkey(employee.publicKey);
-        if (!node) throw new Error('Node not found for this Employee');
+      // find the node that made this Employee
+      const node = db.getNodeByPubkey(employee.publicKey);
+      if (!node) throw new Error('Node not found for this Employee');
 
-        // create an invoice on the Employee's node
-        const rpc = nodeManager.getRpc(node.token);
-        const amount = 10;
-        const inv = await rpc.addInvoice({ value: amount.toString() });
-        res.send({
-          payreq: inv.paymentRequest,
-          hash: (inv.rHash as Buffer).toString('base64'),
-          amount,
-        });
-      } else {
-        res.status(404).json({ error: `No Employee found with ID ${req.params.id}`});
-      }
+      // create an invoice on the Employee's node
+      const rpc = nodeManager.getRpc(node.token);
+      const amount = 10;
+      const inv = await rpc.addInvoice({ value: amount.toString() });
+      res.send({
+        payreq: inv.paymentRequest,
+        hash: (inv.rHash as Buffer).toString('base64'),
+        amount,
+      });
+    } else {
+      res.status(404).json({ error: `No Employee found with ID ${req.params.id}`});
+    }
   } catch(err) {
     next(err);
   }

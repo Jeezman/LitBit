@@ -2,17 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="848508ea-ca4e-4ecf-b0e0-3f0a6e6dd1f2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard/Payroll/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard/Settings/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard/components/BalanceCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard/components/CreateEmployee.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard/components/HistoryTable.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard/components/Listbox.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard/components/PayrollList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard/components/Sidebar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Login/LoginForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Login/LoginForm.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/api/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/icons.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Loader.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Loader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/config/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/tailwind.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/employee-db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/employee-db.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/employee.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/employee.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/node-manager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/node-manager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/transaction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/transaction.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/server/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +76,23 @@
       <workItem from="1648211730169" duration="13339000" />
       <workItem from="1648225397386" duration="13430000" />
       <workItem from="1648240617774" duration="4929000" />
-      <workItem from="1648245640319" duration="18304000" />
+      <workItem from="1648245640319" duration="20359000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
