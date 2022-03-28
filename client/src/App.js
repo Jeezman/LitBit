@@ -7,6 +7,7 @@ import { Loader } from './components/Loader';
 import { Dashboard } from './Dashboard';
 import { Payroll } from './Dashboard/Payroll';
 import { DashboardHome } from './Dashboard/Settings';
+import { Node } from './Dashboard/Node';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="dashboard" element={<Dashboard />}>
           <Route path="" element={<DashboardHome />} />
           <Route path="payroll" element={<Payroll />} />
+          <Route path="node/:id" element={<Node />} />
         </Route>
       </Routes>
 
