@@ -16,7 +16,7 @@ app.use(cors({ origin: '*' }));
 
 
 // Routes
-app.get('/info', async (req, res, next) => {
+app.get('/api/info', async (req, res, next) => {
   try {
     const info = await node.getInfo();
     const { balance } = await node.channelBalance();
