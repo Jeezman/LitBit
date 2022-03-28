@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
+import { createEmployee } from '../../api';
 
 const schedule = [
   { name: 'HOURLY' },
@@ -9,14 +10,19 @@ const schedule = [
   { name: 'MONTHLY' },
 ];
 
-export function ListBox() {
+export function ListBox(props) {
   const [selected, setSelected] = useState(schedule[0]);
+
+  const handleSetSelected = (e) => {
+    setSelected(e);
+    props.handleSetSelected(e);
+  };
 
   return (
     <div className="w-full top-16 z-10">
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={selected} onChange={handleSetSelected}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 cursor-default ">
+          <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white border rounded-md text-black dark:border-gray-300 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 cursor-default ">
             <span className="block truncate">{selected.name}</span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <SelectorIcon
@@ -31,7 +37,7 @@ export function ListBox() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-10">
+            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-opacity-5 focus:outline-none sm:text-sm z-10">
               {schedule.map((person, personIdx) => (
                 <Listbox.Option
                   key={personIdx}
