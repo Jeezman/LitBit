@@ -5,6 +5,7 @@ import { node, initNode } from './node';
 // import employeeManager from "./employee";
 import db, {EmployeeEvents, LndNode} from './employee-db';
 import nodeManager from "./node-manager";
+import {SendRequest} from "@radar/lnrpc/types/lnrpc";
 import cors from 'cors';
 
 // Configure server
@@ -47,7 +48,7 @@ app.post('/api/employees', async (req, res, next) => {
       throw new Error('Fields name, payInSatoshi and paymentScheduleRate are required to make a employee');
     }
 
-    const employee = db.createEmployee(name, payInSatoshi, paymentScheduleRate, publicKey);
+    const employee = db.createEmployee(name, payInSatoshi, paymentScheduleRate.toUpperCase(), publicKey);
     // const invoice = await node.addInvoice({
     //   memo: `LitBit Employees #${employee.id}`,
     //   value: payInSatoshi,
@@ -75,13 +76,14 @@ app.post('/api/node/:employeeId', async (req, res, next) => {
       }
       let nodeByPubkey = db.getNodeByPubkey(employeeDetail.publicKey);
       if(!nodeByPubkey){
-        const { token, publicKey } = await nodeManager.connect(host, cert, macaroon);
+        const { token, publicKey, balance } = await nodeManager.connect(host, cert, macaroon);
         const lndNode = <LndNode> {
           token: token,
           host: host,
           cert: cert,
           macaroon: macaroon,
-          pubkey: publicKey
+          pubkey: publicKey,
+          channelBalance: balance
         }
         db.updateEmployeePublickKey(employeeDetail.id, publicKey)
         db.addNode(lndNode)
@@ -114,24 +116,24 @@ app.get('/api/employees/:employeeId/invoice', async (req, res, next) => {
     // find the Employee
     const employee = db.getEmployee(parseInt(employeeId));
     if (!employee) throw new Error('Employee not found');
-      if (employee) {
+    if (employee) {
 
-        // find the node that made this Employee
-        const node = db.getNodeByPubkey(employee.publicKey);
-        if (!node) throw new Error('Node not found for this Employee');
+      // find the node that made this Employee
+      const node = db.getNodeByPubkey(employee.publicKey);
+      if (!node) throw new Error('Node not found for this Employee');
 
-        // create an invoice on the Employee's node
-        const rpc = nodeManager.getRpc(node.token);
-        const amount = 10;
-        const inv = await rpc.addInvoice({ value: amount.toString() });
-        res.send({
-          payreq: inv.paymentRequest,
-          hash: (inv.rHash as Buffer).toString('base64'),
-          amount,
-        });
-      } else {
-        res.status(404).json({ error: `No Employee found with ID ${req.params.id}`});
-      }
+      // create an invoice on the Employee's node
+      const rpc = nodeManager.getRpc(node.token);
+      const amount = 10;
+      const inv = await rpc.addInvoice({ value: amount.toString() });
+      res.send({
+        payreq: inv.paymentRequest,
+        hash: (inv.rHash as Buffer).toString('base64'),
+        amount,
+      });
+    } else {
+      res.status(404).json({ error: `No Employee found with ID ${req.params.id}`});
+    }
   } catch(err) {
     next(err);
   }
@@ -147,12 +149,13 @@ app.post("/api/employees/:employeeId/pay-invoice", async function (req, res, nex
     // find the Employee
     const employee = db.getEmployee(parseInt(employeeId));
     if (!employee) throw new Error('Employee not found');
-    // find the node that made this Employee
-    const node = db.getNodeByPubkey(employee.publicKey);
-    if (!node) throw new Error('Node not found for this Employee');
 
-    const rpc = nodeManager.getRpc(node.token);
-    await rpc.sendPayment(payment_request);
+    // await rpc.sendPayment(payment_request);
+    // let request = {payment_hash_string: payment_request};
+    let request = <SendRequest> {
+      paymentRequest: payment_request
+    }
+    node.sendPaymentSync(request);
     res.send(employee);
   } catch(err) {
     next(err);
@@ -191,15 +194,51 @@ app.post("/api/employees/:employeeId/check-invoice", async function (req, res, n
 });
 
 
+app.post('/api/transactions', async (req, res, next) => {
+  try {
+    const { employeeId, description} = req.body;
+
+    if (!employeeId) {
+      throw new Error('Fields employeeId are required to make a employee');
+    }
+    const employee = db.getEmployee(parseInt(employeeId));
+    if (!employee) throw new Error('Employee not found');
+
+    const transaction = db.createTransaction(employeeId, description);
+
+    res.json({
+      data: {
+        transaction
+      },
+    });
+  } catch(err) {
+    next(err);
+  }
+});
+
+app.get('/api/transactions', (req, res) => {
+  res.json({ data: db.getTransations() });
+});
+
+app.get('/api/transactions/:id', (req, res) => {
+  const employee = db.getTransationByEmployeeId(parseInt(req.params.id, 10));
+  if (employee) {
+    res.json({ data: employee });
+  } else {
+    res.status(404).json({ error: `No Transaction found Employee with ID ${req.params.id}`});
+  }
+});
+
+
 
 // Initialize node & server
 console.log('Initializing Lightning node...');
 initNode().then(() => {
   console.log('Lightning node initialized!');
   console.log('Starting server...');
-  db.createEmployee("zIlesanmi", 200, "Hourly", "hgkjhgkj");
-  db.createEmployee("aIlesanmi", 200, "Hourly", "hgkjhgkjewr");
-  db.createEmployee("bOmoniyi", 400, "monthly", "hgkwerwqjhgkj");
+  db.createEmployee("zIlesanmi", 12, "MINUTES", "02a47994e192a8bd67bf854c4f6c6c9f28eea9901f015cbc0e8690567059b28737");
+  // db.createEmployee("aIlesanmi", 10, "HOURLY", "hgkjhgkjewr");
+  // db.createEmployee("bOmoniyi", 40, "DAILY", "02a47994e192a8bd67bf854c4f6c6c9f28eea9901f015cbc0e8690567059b28737");
   app.listen(env.PORT, () => {
     console.log(`Server started at http://localhost:${env.PORT}!`);
   });

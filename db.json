@@ -8,17 +8,17 @@
       "publicKey": "hgkwerwqjhgkj"
     },
     {
-      "id": 2,
-      "name": "aIlesanmi",
-      "payInSatoshi": 200,
-      "paymentScheduleRate": "Hourly",
-      "publicKey": "hgkjhgkjewr"
+      "id": 1,
+      "name": "zIlesanmi",
+      "payInSatoshi": 12,
+      "paymentScheduleRate": "MINUTES",
+      "publicKey": "02a47994e192a8bd67bf854c4f6c6c9f28eea9901f015cbc0e8690567059b28737"
     },
     {
       "id": 3,
-      "name": "bOmoniyi",
-      "payInSatoshi": 400,
-      "paymentScheduleRate": "monthly",
+      "name": "safdlh",
+      "payInSatoshi": "sdf",
+      "paymentScheduleRate": "HOURLY",
       "publicKey": "hgkwerwqjhgkj"
     },
     {
