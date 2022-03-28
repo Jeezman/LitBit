@@ -60,6 +60,7 @@ export const Payroll = () => {
           setAmount={setAmount}
           setRate={setRate}
           handleFormSubmit={handleAddEmployees}
+          setIsOpen={setIsOpen}
         />
       )}
     </div>

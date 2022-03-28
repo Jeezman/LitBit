@@ -24,3 +24,7 @@ export const getInfo = () => {
 export const getTransactions = () => {
     return axios.get('transactions')
 }
+
+export const addNode = (id, data) => {
+    return axios.post(`node/${id}`, data)
+}
