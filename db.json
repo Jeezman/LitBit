@@ -1,0 +1,41 @@
+{
+  "employees": [
+    {
+      "id": 4,
+      "name": "Shedrack",
+      "payInSatoshi": "60",
+      "paymentScheduleRate": "MONTHLY",
+      "publicKey": "hgkwerwqjhgkj"
+    },
+    {
+      "id": 1,
+      "name": "zIlesanmi",
+      "payInSatoshi": 12,
+      "paymentScheduleRate": "MINUTES",
+      "publicKey": "02a47994e192a8bd67bf854c4f6c6c9f28eea9901f015cbc0e8690567059b28737"
+    },
+    {
+      "id": 3,
+      "name": "safdlh",
+      "payInSatoshi": "sdf",
+      "paymentScheduleRate": "HOURLY",
+      "publicKey": "hgkwerwqjhgkj"
+    },
+    {
+      "id": 1,
+      "name": "zIlesanmi",
+      "payInSatoshi": 200,
+      "paymentScheduleRate": "Hourly",
+      "publicKey": "hgkjhgkj"
+    },
+    {
+      "id": 5,
+      "name": "Daisy",
+      "payInSatoshi": "7",
+      "paymentScheduleRate": "DAILY",
+      "publicKey": "hgkwerwqjhgkj"
+    }
+  ],
+  "nodes": [],
+  "transactions": []
+}
