@@ -4,4 +4,4 @@ node_modules
 .DS_Store
 ./db.json
 .idea
-package-lock.json
+./package-lock.json
