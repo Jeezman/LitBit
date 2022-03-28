@@ -67,7 +67,7 @@ export function CreateEmployeeForm(props) {
                   <form onSubmit={handleFormSubmit} className="mt-6">
                     <div>
                       <label
-                        for="username"
+                        htmlFor="username"
                         className="block text-sm dark:text-gray-500"
                       >
                         Name
@@ -83,7 +83,7 @@ export function CreateEmployeeForm(props) {
                     <div className="mt-4">
                       <div className="flex items-center justify-between">
                         <label
-                          for="password"
+                          htmlFor="password"
                           className="block text-sm dark:text-gray-500"
                         >
                           Amount (in sats)
@@ -100,7 +100,7 @@ export function CreateEmployeeForm(props) {
                     <div className="mt-4">
                       <div className="flex items-center justify-between">
                         <label
-                          for="password"
+                          htmlFor="password"
                           className="block text-sm dark:text-gray-500"
                         >
                           Payment schedule
